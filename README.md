@@ -1,17 +1,17 @@
 # Access_Control_List_Yapilandirmasi
 Bilgi teknolojileri alanında ağ güvenliği, sistemlerin güvenli ve verimli çalışmasını sağlamak için kritik bir konudur. Özellikle belirli cihazların belirli hizmetlere erişimini düzenlemek, hem güvenliği artırır hem de ağ trafiğini kontrol altında tutmaya yardımcı olur. Bu amaçla, Genişletilmiş
-![image alt]()
+
 Access Control List (Extended ACL) kullanarak ağ trafiğini filtrelemek yaygın bir uygulamadır.<br>
- 
+ ![image alt](https://github.com/nurullahnamal/Access_Control_List_Yapilandirmasi/blob/main/Geni%C5%9Fletilmi%C5%9F%20ACL%20yap%C4%B1land%C4%B1rmas%C4%B1.png)
 Bu çalışmada, belirlenen kurallar çerçevesinde bir ACL yapılandırması gerçekleştirilecektir. Senaryomuzda: <br>
 ✅ 192.168.1.0/24 ağı, 172.16.10.100 sunucusuna sadece ping (ICMP) atabilecek ve diğer tüm trafik engellenecektir. <br>
 ✅ 192.168.2.0/24 ağı içindeki cihazlardan yalnızca 192.168.2.10'un FTP erişimi açık olacak, diğerleri engellenecektir. <br>
 ✅ 172.16.2.20 cihazının 172.16.10.100 ile FTP bağlantısı kurması yasaklanacaktır. <br>
+![image alt](https://github.com/nurullahnamal/Access_Control_List_Yapilandirmasi/blob/main/192.168.1.10%20cihaz%C4%B1%20ping%20172.16.10.100%20.gif)
 
-![image alt]() <br>
 Ağ güvenliğini sağlamak ve belirli cihazların belirli hizmetlere erişimini kontrol etmek için Genişletilmiş ACL (Extended Access Control List) kullanılır.<br>
 Bu çalışmada, 192.168.2.10 cihazının FTP erişimini serbest bırakırken, 192.168.2.20 cihazının 172.16.10.100 FTP sunucusuna erişmesini engelleyecek bir ACL yapılandırması oluşturduk.<br>
-
+![image alt](https://github.com/nurullahnamal/Access_Control_List_Yapilandirmasi/blob/main/192.168.2.10%20to%20ftp%20172.16.10.100.gif) <br>
 ACL 105 Yapılandırması<br>
 Aşağıdaki komutlar kullanılarak, belirlenen kurallar doğrultusunda bir Extended ACL (105 numaralı) oluşturulmuştur: <br>
 
@@ -22,11 +22,11 @@ R1-gig 0/0- access-list 105 deny tcp 192.168.1.0 0.0.0.255 host 172.16.10.100 eq
 R1-gig 0/0- access-list 105 permit icmp any any ( any izin verme anlamı tasır ,ping atarız ) <br>
 
 uygulama : interface fastEthernet 0/0 <br>
-![image alt]()
+
 ip access-grup 105 in <br>
 Bu aşamada 192.168.2.0 network den sadece 192.168.2.10 ip adresi 172.16.10.100 e ftp bağlantısı gönderirken, 192.168.2.20 ftp bağlantısı yapamayacak. <br>
 
-![image alt]()
+![image alt](https://github.com/nurullahnamal/Access_Control_List_Yapilandirmasi/blob/main/192.168.2.20%20to%20ftp%20172.16.10.100.gif)
  
 #192.168.2.0  <br>
 access-list 106 deny tcp host 192.168.2.20 host 172.16.10.100 eq ftp <br>
