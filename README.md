@@ -39,7 +39,7 @@ ip access-group 106 in <br>
 ACL’nin Arayüze Uygulanması <br>
 Yukarıdaki ACL kurallarının çalışabilmesi için, ilgili router’ın GigabitEthernet 0/1 arayüzüne uygulanması gerekmektedir. Bunu aşağıdaki komutlarla gerçekleştiriyoruz: <br>
 
-![image alt]()
+
 Konfigürasyon Açıklaması <br>
 Permit TCP (192.168.2.10 — FTP erişimi açık): 192.168.2.10 cihazının 172.16.10.100 adresindeki FTP sunucusuna erişmesine izin verilir. <br>
 Deny TCP (192.168.2.20 — FTP erişimi engellendi): 192.168.2.20 cihazının FTP sunucusuna bağlanmasını engellemek için bir kural eklenir. <br>
